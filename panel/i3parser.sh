@@ -111,5 +111,5 @@ while read -r line ; do
       ;;
   esac
 
-  printf "%s\n" "%{l}${bgn} ${wsp} %{F#b5bd68}%{B#454a4f} %{F#454a4f}%{B$WIN_BG}$SEP_RIGHT ${title} %{r}%{F#3D3D3D}%{B$BG}$SEP_LEFT${vol} ${net}${battery} ${time} %{B${BG}}"
+  printf "%s\n" "%{l}${bgn} ${wsp} %{r}%{F#3D3D3D}%{B$BG}$SEP_LEFT${vol} ${net}${battery} ${time} %{B${BG}}"
 done
