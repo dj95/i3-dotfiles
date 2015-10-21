@@ -10,7 +10,7 @@
 import time
 import os
 
-import i3
+import i3ipc
 
 
 DELIMITER = ''
@@ -28,18 +28,18 @@ BEFORE_BG = '#b5bd68'
 class i3ws(object):
     
     def __init__(self, state=None):
-        self.socket = i3.Socket()
+        self.socket = i3ipc.Connection()
         
-        workspaces = self.socket.get('get_workspaces')
-        outputs = self.socket.get('get_outputs')
+        workspaces = self.socket.get_workspaces()
+        outputs = self.socket.get_outputs()
         self.generate(workspaces)
         
-        callback = lambda data, event, _: self.change(data, event)
-        self.subscription = i3.Subscription(callback, 'workspace')
-    
-    def change(self, event, workspaces):
-        if 'change' in event:
-            self.generate(workspaces)
+        self.socket.on("workspace", self.change)
+        self.socket.main()
+
+    def change(self, i3, event):
+        if event.change in ('focus', 'init', 'empty', 'urgent'):
+            self.generate(self.socket.get_workspaces())
    
     def generate(self, workspaces):
         out = ''

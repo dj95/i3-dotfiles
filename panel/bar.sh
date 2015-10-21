@@ -5,7 +5,7 @@
 #. $(dirname $0)/i3_lemonbar_config
 
 # Configuration
-panel_fifo="/tmp/i3_lemonbar_${USER}_2"
+panel_fifo="/dev/shm/i3_lemonbar_${USER}_2"
 
 # look, if bar's already running
 if [ $(pgrep -cx $(basename $0)) -gt 1 ] ; then
@@ -23,7 +23,7 @@ mkfifo "${panel_fifo}"
 echo "BGN" > "${panel_fifo}" &
 
 # Window title, "WIN"
-xtitle -s | sed -unre 's/(.*)/WIN\1/p' > "${panel_fifo}" &
+#xtitle -s | sed -unre 's/(.*)/WIN\1/p' > "${panel_fifo}" &
 
 # i3 Workspaces, "WSP"
 /home/neo/.i3/panel/i3ws.py > ${panel_fifo} &
