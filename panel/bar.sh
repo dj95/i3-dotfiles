@@ -29,7 +29,7 @@ echo "BGN" > "${panel_fifo}" &
 /home/neo/.i3/panel/i3ws.py > ${panel_fifo} &
 
 # i3status, "SYS"
-/opt/i3status/i3status > ${panel_fifo} &
+/opt/i3status/i3status -c /home/neo/.i3/panel/i3status.conf > ${panel_fifo} &
 
 # read from fifo into lemonbar
 cat "${panel_fifo}" | /home/neo/.i3/panel/i3parser.sh \
