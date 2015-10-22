@@ -76,10 +76,10 @@ class i3ws(object):
                 else:
                     if workspaces[i+1]['focused']:
                         out += '%{F' + BEFORE_BG + '}%{B' + INACTIVE_BG + '}' + DELIMITER \
-                                + '%{F' + INACTIVE_FG + '}%{B' + INACTIVE_BG + '} ' + w['name'].split(':')[1] + ' %{F' + INACTIVE_BG + '}%{B' + ACTIVE_BG + '}' + DELIMITER
+                                + '%{F' + INACTIVE_FG + '}%{B' + INACTIVE_BG + '}' + w['name'].split(':')[1] + ' %{F' + INACTIVE_BG + '}%{B' + ACTIVE_BG + '}' + DELIMITER
                     else:
                         out += '%{F' + BEFORE_BG + '}%{B' + INACTIVE_BG + '}' + DELIMITER \
-                                + '%{F' + INACTIVE_FG + '}%{B' + INACTIVE_BG + '} ' + w['name'].split(':')[1] + ' %{F' + INACTIVE_FG + '}%{B' + INACTIVE_BG + '}' + DELIMITER_SLIM
+                                + '%{F' + INACTIVE_FG + '}%{B' + INACTIVE_BG + '}' + w['name'].split(':')[1] + ' %{F' + INACTIVE_FG + '}%{B' + INACTIVE_BG + '}' + DELIMITER_SLIM
             else:
                 if w['focused'] == True:
                     if i != len(workspaces)-1:
@@ -90,11 +90,11 @@ class i3ws(object):
                 else:
                     if i+1 <= len(workspaces)-1:
                         if workspaces[i+1]['focused']:
-                            out += '%{F' + INACTIVE_FG + '}%{B' + INACTIVE_BG + '} ' + w['name'].split(':')[1] + ' %{F' + INACTIVE_BG + '}%{B' + ACTIVE_BG + '}' + DELIMITER
+                            out += '%{F' + INACTIVE_FG + '}%{B' + INACTIVE_BG + '}' + w['name'].split(':')[1] + ' %{F' + INACTIVE_BG + '}%{B' + ACTIVE_BG + '}' + DELIMITER
                         else:
-                            out += '%{F' + INACTIVE_FG + '}%{B' + INACTIVE_BG + '} ' + w['name'].split(':')[1] + ' %{F' + INACTIVE_FG + '}%{B' + INACTIVE_BG + '}' + DELIMITER_SLIM
+                            out += '%{F' + INACTIVE_FG + '}%{B' + INACTIVE_BG + '}' + w['name'].split(':')[1] + ' %{F' + INACTIVE_FG + '}%{B' + INACTIVE_BG + '}' + DELIMITER_SLIM
                     else: # last item
-                        out += '%{F' + INACTIVE_FG + '}%{B' + INACTIVE_BG + '} ' + w['name'].split(':')[1] + ' %{F' + INACTIVE_BG + '}%{B' + AFTER_BG + '}' + DELIMITER \
+                        out += '%{F' + INACTIVE_FG + '}%{B' + INACTIVE_BG + '}' + w['name'].split(':')[1] + ' %{F' + INACTIVE_BG + '}%{B' + AFTER_BG + '}' + DELIMITER \
                                 + '%{F#b5bd68}%{B' + AFTER_BG + '}  %{F#454a4f}%{B' + WIN_BG +'}' + DELIMITER + '%{F' + WIN_FG + '}%{B' + WIN_BG + '} ' + str(self.get_title(workspaces)) + '%{F' + WIN_BG + '}%{B' + BG + '}' + DELIMITER
         
         # For panel fifo
