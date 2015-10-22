@@ -19,9 +19,6 @@ trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 [ -e "${panel_fifo}" ] && rm "${panel_fifo}"
 mkfifo "${panel_fifo}"
 
-# Host- and Username, "BGN"
-echo "BGN" > "${panel_fifo}" &
-
 # Window title, "WIN"
 #xtitle -s | sed -unre 's/(.*)/WIN\1/p' > "${panel_fifo}" &
 

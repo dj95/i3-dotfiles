@@ -72,9 +72,6 @@ while read -r line ; do
           battery="${battery::-1}"
       fi
       ;;
-    BGN*)
-      bgn="%{F$BGN_FG}%{B$BGN_BG} ${line#???}"
-      ;;
     WSP*)
       wsp=${line#???} 
       ;;
@@ -83,5 +80,5 @@ while read -r line ; do
       ;;
   esac
 
-  printf "%s\n" "%{l}${bgn} ${wsp} %{r}%{F#3D3D3D}%{B$BG}$SEP_LEFT${vol} ${net}${battery} ${time} %{B${BG}}"
+  printf "%s\n" "%{l}%{F$BGN_FG}%{B$BGN_BG}  ${wsp} %{r}%{F#3D3D3D}%{B$BG}$SEP_LEFT${vol} ${net}${battery} ${time} %{B${BG}}"
 done

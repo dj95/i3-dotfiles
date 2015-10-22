@@ -40,11 +40,11 @@ class i3ws(object):
         self.generate(workspaces)
 
         self.socket.on("workspace", self.change)
-        self.socket.on("window::focus", self.change)
+        self.socket.on("window", self.change)
         self.socket.main()
 
     def change(self, i3, event):
-        if event.change in ('focus', 'init', 'empty', 'urgent'):
+        if event.change in ('focus', 'init', 'empty', 'urgent', 'title'):
             self.generate(self.socket.get_workspaces())
 
     def get_title(self, workspaces):
