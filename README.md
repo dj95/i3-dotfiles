@@ -11,6 +11,7 @@ My personal i3-dotfiles
 - i3-gaps
 - Python
 - i3ipc-python-git
+- my [i3status](https://github.com/dj95/i3status) fork
 
 
 ## License
