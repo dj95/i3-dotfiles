@@ -12,9 +12,11 @@
 set $mod Mod4
 
 # Autostart
+exec --no-startup-id jackd -d alsa -d hw:1,0
+exec --no-startup-id qjackctl & 
 exec --no-startup-id pulseaudio --start
 exec --no-startup-id nitrogen --restore 
-exec --no-startup-id compton -czCGb --backend glx --vsync opengl --config /home/neo/.compton &
+exec --no-startup-id compton --config /home/neo/.comptonrc &
 exec --no-startup-id mpd /home/neo/.mpd/mpd.conf
 exec --no-startup-id ~/.i3/panel/bar.sh
 
@@ -58,7 +60,7 @@ bindsym $mod+Return exec --no-startup-id urxvt
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -o 0.9 -q -i -dim 0.7 -l 23 -h 6 -p '' -x 550 -y 75 -w 520 -fn 'URW Gothic: pixelsize=15' -sf '#1D1D1D' -sb '#b5bd68'"
+bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -o 0.9 -q -i -dim 0.7 -l 23 -h 6 -p '' -x 550 -y 75 -w 520 -fn 'URW Gothic: pixelsize=15' -sf '#1D1D1D' -sb '#8fb6a1'"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -149,7 +151,7 @@ bindsym $mod+Shift+y reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit; pkill -x bar.sh'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -195,9 +197,10 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000
 # finds out, if available)
 bar {
     position       bottom
-    #status_command echo "\n" 
+    i3bar_command i3bar -t
+    #status_command i3blocks -c /home/neo/.i3blocks.conf
     #font pango:Terminesspowerline 10px
-    font pango:Terminesspowerline, Ionicons 8
+    font pango:Terminesspowerline, Icons 8
     tray_output    eDP1
     strip_workspace_numbers yes
     workspace_buttons no
@@ -206,7 +209,7 @@ bar {
     modifier Mod3
 
     colors {
-        background #1D1D1D
+        background #00000000
         separator  #BDBDBD
 
         focused_workspace  #171717 #171717 #88D5DF
