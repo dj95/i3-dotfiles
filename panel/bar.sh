@@ -30,6 +30,6 @@ mkfifo "${panel_fifo}"
 
 # read from fifo into lemonbar
 cat "${panel_fifo}" | /home/neo/.i3/panel/i3parser.sh \
-  | lemonbar -B "#00232323" -f "Terminesspowerline-8" -f "Ionicons-8" -f "Serif-7"&
+  | lemonbar -B "#00000000" -f "Terminesspowerline-8" -f "Ionicons-8" -f "Serif-7" &
 
 wait

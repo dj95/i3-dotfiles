@@ -5,7 +5,7 @@
 
 # config
 BGN_FG="#1D1D1D"
-BGN_BG="#b5bd68"
+BGN_BG="#8fb6a1"
 
 WS_BG="#000000"
 
@@ -24,7 +24,7 @@ BAT_BG=$WIN_BG
 DATE_FG=$BGN_FG
 DATE_BG=$BGN_BG
 
-BG="#1D1D1D"
+BG="#00000000"
 
 SEP_RIGHT=""
 SEP_LEFT=""
