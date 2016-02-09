@@ -4,8 +4,8 @@
 # © 2015 Daniel Jankowski
 
 # config
-BGN_FG="#BDBDBD"
-BGN_BG="#1D1D1D"
+BGN_FG="#1D1D1D"
+BGN_BG="#8fb6a1"
 
 WS_BG="#000000"
 
@@ -13,16 +13,16 @@ WIN_FG="#BDBDBD"
 WIN_BG="#1D1D1D"
 
 VOL_FG="#BDBDBD"
-VOL_BG="#1D1D1D"
+VOL_BG="#2B2B2B"
 
-NET_FG="#BDBDBD"
-NET_BG="#1D1D1D"
+NET_FG=$BGN_BG
+NET_BG="#3D3D3D"
 
-BAT_FG="#BDBDBD"
-BAT_BG="#1D1D1D"
+BAT_FG=$WIN_FG
+BAT_BG=$WIN_BG
 
-DATE_FG="#BDBDBD"
-DATE_BG="#1D1D1D"
+DATE_FG=$BGN_FG
+DATE_BG=$BGN_BG
 
 BG="#00000000"
 
@@ -39,36 +39,36 @@ while read -r line ; do
 
       # date
       date=($date)
-      time="%{F$DATE_BG}%{B$BAT_BG}$SEP_LEFT%{F$DATE_FG}%{B$DATE_BG} ${date[0]}  ${date[1]}"
+      time="%{F$DATE_BG}%{B$BAT_BG}$SEP_LEFT%{F$DATE_FG}%{B$DATE_BG}  ${date[0]} $SEP_LEFT_SLIM ${date[1]}"
 
       # volume
-      vol="%{F$VOL_BG}%{B#1D1D1D}$SEP_LEFT%{F#5D5D5D} V: %{F${VOL_FG}}%{B${VOL_BG}}${vol}"
+      vol="%{F$VOL_BG}%{B#3D3D3D}$SEP_LEFT%{F${VOL_FG}}%{B${VOL_BG}}  ${vol}"
       vol="${vol::-1}"
 
       # network
       if [[ ${wlan} != "down " ]] && [[ ${eth} != "down " ]]; then # both up
-          net="%{F$NET_BG}%{B$VOL_BG}$SEP_LEFT%{F#5D5D5D} W: %{F$NET_FG}%{B$NET_BG}$wlan  %{F#5D5D5D}E:%{F$NET_FG} ${eth}"
+          net="%{F$NET_BG}%{B$VOL_BG}$SEP_LEFT%{F$NET_FG}%{B$NET_BG}  $wlan $SEP_LEFT_SLIM  ${eth}"
       
           # battery
-          battery="%{F$BAT_BG}%{B$NET_BG}$SEP_LEFT%{F#5D5D5D} B:%{F$BAT_FG}%{B$BAT_BG}${bat:4}"
+          battery="%{F$BAT_BG}%{B$NET_BG}$SEP_LEFT%{F$BAT_FG}%{B$BAT_BG}  ${bat:4}"
           battery="${battery::-1}"
       elif [[ ${wlan} == "down " ]] && [[ ${eth} == "down " ]]; then # both down
           net="%{F$NET_BG}%{B$VOL_BG}$SEP_LEFT"
       
           # battery
-          battery="%{F$BAT_BG}%{B$NET_BG}$SEP_LEFT%{F#5D5D5D} B:%{F$BAT_FG}%{B$BAT_BG}${bat:4}"
+          battery="%{F$BAT_BG}%{B$NET_BG}$SEP_LEFT%{F$BAT_FG}%{B$BAT_BG}  ${bat:4}"
           battery="${battery::-1}"
       elif [[ ${eth} == "down " ]] && [[ ${wlan} != "down " ]]; then # wifi only
-          net="%{F$NET_BG}%{B$VOL_BG}$SEP_LEFT%{F#5D5D5D} W: %{F$NET_FG}%{B$NET_BG}${wlan}"
+          net="%{F$NET_BG}%{B$VOL_BG}$SEP_LEFT%{F$NET_FG}%{B$NET_BG}  ${wlan}"
 
           # battery
-          battery="%{F$BAT_BG}%{B$NET_BG}$SEP_LEFT%{F#5D5D5D} B:%{F$BAT_FG}%{B$BAT_BG}${bat:4}"
+          battery="%{F$BAT_BG}%{B$NET_BG}$SEP_LEFT%{F$BAT_FG}%{B$BAT_BG}  ${bat:4}"
           battery="${battery::-1}"
       elif [[ ${eth} != "down " ]] && [[ ${wlan} == "down " ]]; then # eth only
-          net="%{F$NET_BG}%{B$VOL_BG}$SEP_LEFT%{F#5D5D5D} E: %{F$NET_FG}%{B$NET_BG}${eth}"
+          net="%{F$NET_BG}%{B$VOL_BG}$SEP_LEFT%{F$NET_FG}%{B$NET_BG}  ${eth}"
       
           # battery
-          battery="%{F$BAT_BG}%{B$NET_BG}$SEP_LEFT%{F#5D5D5D} B:%{F$BAT_FG}%{B$BAT_BG}${bat:4}"
+          battery="%{F$BAT_BG}%{B$NET_BG}$SEP_LEFT%{F$BAT_FG}%{B$BAT_BG}  ${bat:4}"
           battery="${battery::-1}"
       fi
       ;;
@@ -80,5 +80,5 @@ while read -r line ; do
       ;;
   esac
 
-  printf "%s\n" "%{l} ${USER}@${HOSTNAME} ${wsp} %{r}${vol} ${net}${battery} ${time} %{B${BG}}"
+  printf "%s\n" "%{l}%{F$BGN_FG}%{B$BGN_BG}  ${wsp} %{r}%{F#3D3D3D}%{B$BG}$SEP_LEFT${vol} ${net}${battery} ${time} %{B${BG}}"
 done

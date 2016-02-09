@@ -12,8 +12,8 @@
 set $mod Mod4
 
 # Autostart
-exec --no-startup-id jackd -d alsa -d hw:1,0
-exec --no-startup-id qjackctl & 
+#exec --no-startup-id jackd -d alsa -d hw:1,0
+#exec --no-startup-id qjackctl & 
 exec --no-startup-id pulseaudio --start
 exec --no-startup-id nitrogen --restore 
 exec --no-startup-id compton --config /home/neo/.comptonrc &
@@ -43,7 +43,7 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id sh /home/neo/.dotfiles/shortcu
 bindsym XF86MonBrightnessUp exec --no-startup-id sh /home/neo/.dotfiles/shortcuts/brig_up.sh
 bindsym XF86MonBrightnessDown exec --no-startup-id sh /home/neo/.dotfiles/shortcuts/brig_down.sh
 bindsym XF86PowerOff exec --no-startup-id sh /home/neo/.dotfiles/shortcuts/powermenu.sh
-bindsym $mod+F3 exec --no-startup-id sh /home/neo/.dotfiles/shortcuts/touchpad_control.sh
+bindsym $mod+F6 exec --no-startup-id sh /home/neo/.dotfiles/shortcuts/touchpad_control.sh
 bindsym ctrl+Mod1+k exec --no-startup-id sh /home/neo/.dotfiles/shortcuts/lock.sh
 bindsym Print exec --no-startup-id xfce4-screenshooter -s /home/neo/Bilder/Screenshots -r
 bindsym ctrl+Mod1+l exec --no-startup-id sxlock
@@ -115,6 +115,14 @@ bindsym $mod+a focus parent
 
 # focus the child container
 bindsym $mod+y focus child
+
+# multi monitor
+bindsym $mod+F1 focus output eDP1
+bindsym $mod+F2 focus output HDMI1
+bindsym $mod+F3 focus output VGA1
+bindsym $mod+Shift+F1 move workspace to output eDP1
+bindsym $mod+Shift+F2 move workspace to output HDMI1
+bindsym $mod+Shift+F3 move workspace to output VGA1
 
 # switch to workspace
 # coding
